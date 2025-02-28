@@ -1,0 +1,3 @@
+com\springmvc\controller\HomeController.class
+com\springmvc\dao\UserDao.class
+com\springmvc\beans\User.class
