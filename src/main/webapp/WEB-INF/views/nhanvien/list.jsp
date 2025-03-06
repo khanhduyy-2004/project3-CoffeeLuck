@@ -80,7 +80,7 @@
                 <tr>
                     <td>${nv.id}</td>
                     <td>${nv.hoTen}</td>
-                    <td>${nv.email}</td>
+                    <td>${nv.email}</td>	
                     <td>${nv.chucVu}</td>
                     <td>${nv.luong}</td>
                     <td>${nv.ngayVaoLam}</td>
