@@ -14,11 +14,11 @@ import java.util.List;
 public class DanhMucController {
 
     @Autowired
-    private DanhMucDao dao;
+    private DanhMucDao danhmucdao;
 
     @GetMapping("/list")
     public String listDanhMuc(Model model) {
-        List<DanhMuc> list = dao.getAllDanhMuc();
+        List<DanhMuc> list = danhmucdao.getAllDanhMuc();
         model.addAttribute("list", list);
         return "danhmuc/list";
     }
@@ -26,31 +26,31 @@ public class DanhMucController {
     @GetMapping("/form")
     public String showForm(Model model) {
         model.addAttribute("command", new DanhMuc());
-        return "danhmuc/save";
+        return "danhmuc/form";
     }
 
     @PostMapping("/save")
     public String save(@ModelAttribute("danhMuc") DanhMuc danhMuc) {
-        dao.save(danhMuc);
+    	danhmucdao.save(danhMuc);
         return "redirect:/danhmuc/list";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") int id, Model model) {
-        DanhMuc danhMuc = dao.getDanhMucById(id);
+        DanhMuc danhMuc = danhmucdao.getDanhMucById(id);
         model.addAttribute("command", danhMuc);
         return "danhmuc/edit";
     }
 
     @PostMapping("/editsave")
     public String editSave(@ModelAttribute("danhMuc") DanhMuc danhMuc) {
-        dao.update(danhMuc);
+    	danhmucdao.update(danhMuc);
         return "redirect:/danhmuc/list";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
-        dao.delete(id);
+    	danhmucdao.delete(id);
         return "redirect:/danhmuc/list";
     }
 }

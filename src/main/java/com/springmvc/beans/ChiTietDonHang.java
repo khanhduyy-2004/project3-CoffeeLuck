@@ -9,7 +9,10 @@ public class ChiTietDonHang {
     private int soLuong;
     private BigDecimal gia;
 
-    public ChiTietDonHang() {}
+    // Constructors
+    public ChiTietDonHang() {
+        super();
+    }
 
     public ChiTietDonHang(int donHangId, int sanPhamId, int soLuong, BigDecimal gia) {
         this.donHangId = donHangId;
@@ -18,6 +21,7 @@ public class ChiTietDonHang {
         this.gia = gia;
     }
 
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -38,4 +42,23 @@ public class ChiTietDonHang {
         return sanPhamId;
     }
 
-    public void
+    public void setSanPhamId(int sanPhamId) {
+        this.sanPhamId = sanPhamId;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public BigDecimal getGia() {
+        return gia;
+    }
+
+    public void setGia(BigDecimal gia) {
+        this.gia = gia;
+    }
+}

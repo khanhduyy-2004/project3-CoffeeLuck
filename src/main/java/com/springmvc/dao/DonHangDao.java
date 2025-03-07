@@ -13,29 +13,26 @@ import java.util.List;
 
 @Repository
 public class DonHangDao {
-
     @Autowired
     private JdbcTemplate template;
-
+    
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
     }
 
     // Thêm đơn hàng mới
     public int save(DonHang dh) {
-        String sql = "INSERT INTO LTKD_DonHang (ltkd_nguoi_dung_id, ltkd_ngay_dat, ltkd_tong_tien, ltkd_trang_thai) "
-                   + "VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO LTKD_DonHang (ltkd_nguoi_dung_id, ltkd_ngay_dat, ltkd_tong_tien, ltkd_trang_thai) VALUES (?, ?, ?, ?)";
         return template.update(sql, dh.getNguoiDungId(), dh.getNgayDat(), dh.getTongTien(), dh.getTrangThai());
     }
 
-    // Cập nhật đơn hàng
+    // Cập nhật thông tin đơn hàng
     public int update(DonHang dh) {
-        String sql = "UPDATE LTKD_DonHang SET ltkd_nguoi_dung_id=?, ltkd_ngay_dat=?, ltkd_tong_tien=?, ltkd_trang_thai=? "
-                   + "WHERE ltkd_id=?";
+        String sql = "UPDATE LTKD_DonHang SET ltkd_nguoi_dung_id=?, ltkd_ngay_dat=?, ltkd_tong_tien=?, ltkd_trang_thai=? WHERE ltkd_id=?";
         return template.update(sql, dh.getNguoiDungId(), dh.getNgayDat(), dh.getTongTien(), dh.getTrangThai(), dh.getId());
     }
 
-    // Xóa đơn hàng
+    // Xóa đơn hàng theo ID
     public int delete(int id) {
         String sql = "DELETE FROM LTKD_DonHang WHERE ltkd_id=?";
         return template.update(sql, id);
@@ -56,7 +53,7 @@ public class DonHangDao {
                 dh.setNguoiDungId(rs.getInt("ltkd_nguoi_dung_id"));
                 dh.setNgayDat(rs.getDate("ltkd_ngay_dat"));
                 dh.setTongTien(rs.getBigDecimal("ltkd_tong_tien"));
-                dh.setTrangThai(rs.getString("ltkd_trang_thai"));
+                dh.setTrangThai(rs.getInt("ltkd_trang_thai"));
                 return dh;
             }
         });

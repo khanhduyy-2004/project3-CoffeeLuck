@@ -27,7 +27,22 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		<property name="dataSource" ref="db"></property>
 	</bean>
 
-	<bean id="dao" class="com.springmvc.dao.NhanVienDao">
-		
+	<bean id="donhangdao" class="com.springmvc.dao.DonHangDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	<bean id="nguoidungdao" class="com.springmvc.dao.NguoiDungDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	<bean id="chitietdao" class="com.springmvc.dao.ChiTietDonHangDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	<bean id="nhanviendao" class="com.springmvc.dao.NhanVienDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	<bean id="sanphamdao" class="com.springmvc.dao.SanPhamDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	<bean id="danhmucdao" class="com.springmvc.dao.DanhMucDao">
+		<property name="template" ref="jt"></property>
 	</bean>
 </beans>

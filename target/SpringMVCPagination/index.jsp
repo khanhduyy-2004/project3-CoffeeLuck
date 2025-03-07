@@ -1,69 +1,90 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <title>Quản Lý CoffeeLuck</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý cửa hàng CoffeeLuck</title>
     <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f8f9fa;
+            background-color: #f4e1c6;
+            color: #4b2e1e;
+            line-height: 1.8;
+        }
+
+        /* Header */
+        .header {
+            background: #6f4e37;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Content */
+        .content {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
-        h2 {
-            color: #6c4f3d;
-        }
-        table {
-            width: 80%;
-            margin: auto;
-            border-collapse: collapse;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-        th {
-            background-color: #6c4f3d;
-            color: white;
-        }
-        a {
-            text-decoration: none;
-            color: #6c4f3d;
-            font-weight: bold;
-        }
+
+        /* Button */
         .btn {
-            padding: 8px 15px;
-            background: #6c4f3d;
+            display: inline-block;
+            background: #d2691e;
             color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            padding: 12px 18px;
+            margin-top: 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
         }
         .btn:hover {
-            background: #563d2d;
+            background: #8b4513;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: #6f4e37;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 14px;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
-    <h2>Danh Sách Nhân Viên CoffeeLuck</h2>
-    <a href="viewform" class="btn">Thêm Nhân Viên</a>
-    <table>
-        <tr><th>ID</th><th>Họ Tên</th><th>Email</th><th>Chức Vụ</th><th>Hành Động</th></tr>
-        <c:forEach var="user" items="${users}">
-            <tr>
-                <td>${user.id}</td>
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.role}</td>
-                <td>
-                    <a href="edit/${user.id}" class="btn">Sửa</a>
-                    <a href="delete/${user.id}" class="btn" style="background: red;">Xóa</a>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
+    <div class="header">
+        ☕ Chào mừng đến Quản lý cửa hàng CoffeeLuck ☕
+    </div>
+    
+    <div class="content">
+        <p>Quản lý nhân viên, đơn hàng và sản phẩm dễ dàng!</p>
+        <a href="menu" class="btn">➡ Đến Menu Chức Năng</a>
+    </div>
+    
+    <div class="footer">
+        &copy; 2025 CoffeeLuck. Được phát triển với niềm đam mê cà phê! ☕❤️
+    </div>
 </body>
 </html>

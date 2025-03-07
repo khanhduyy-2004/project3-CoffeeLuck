@@ -10,7 +10,10 @@ public class DonHang {
     private BigDecimal tongTien;
     private int trangThai;
 
-    public DonHang() {}
+    // Constructors
+    public DonHang() {
+        super();
+    }
 
     public DonHang(int nguoiDungId, Date ngayDat, BigDecimal tongTien, int trangThai) {
         this.nguoiDungId = nguoiDungId;
@@ -19,6 +22,7 @@ public class DonHang {
         this.trangThai = trangThai;
     }
 
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -40,4 +44,22 @@ public class DonHang {
     }
 
     public void setNgayDat(Date ngayDat) {
-        this.n
+        this.ngayDat = ngayDat;
+    }
+
+    public BigDecimal getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(BigDecimal tongTien) {
+        this.tongTien = tongTien;
+    }
+
+    public int getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }
+}

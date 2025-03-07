@@ -13,39 +13,33 @@ import java.util.List;
 
 @Repository
 public class DanhMucDao {
-
     @Autowired
     private JdbcTemplate template;
-
+    
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
     }
 
-    // Thêm danh mục mới
     public int save(DanhMuc dm) {
         String sql = "INSERT INTO LTKD_DanhMuc (ltkd_ten_danh_muc) VALUES (?)";
         return template.update(sql, dm.getTenDanhMuc());
     }
 
-    // Cập nhật danh mục
     public int update(DanhMuc dm) {
         String sql = "UPDATE LTKD_DanhMuc SET ltkd_ten_danh_muc=? WHERE ltkd_id=?";
         return template.update(sql, dm.getTenDanhMuc(), dm.getId());
     }
 
-    // Xóa danh mục
     public int delete(int id) {
         String sql = "DELETE FROM LTKD_DanhMuc WHERE ltkd_id=?";
         return template.update(sql, id);
     }
 
-    // Lấy danh mục theo ID
     public DanhMuc getDanhMucById(int id) {
         String sql = "SELECT * FROM LTKD_DanhMuc WHERE ltkd_id=?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<>(DanhMuc.class));
     }
 
-    // Lấy danh sách danh mục
     public List<DanhMuc> getAllDanhMuc() {
         return template.query("SELECT * FROM LTKD_DanhMuc", new RowMapper<DanhMuc>() {
             public DanhMuc mapRow(ResultSet rs, int rowNum) throws SQLException {

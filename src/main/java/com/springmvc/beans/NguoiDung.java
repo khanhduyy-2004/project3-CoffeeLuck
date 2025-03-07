@@ -6,7 +6,10 @@ public class NguoiDung {
     private String email;
     private String matKhau;
 
-    public NguoiDung() {}
+    // Constructors
+    public NguoiDung() {
+        super();
+    }
 
     public NguoiDung(String hoTen, String email, String matKhau) {
         this.hoTen = hoTen;
@@ -14,6 +17,7 @@ public class NguoiDung {
         this.matKhau = matKhau;
     }
 
+    // Getters and Setters
     public int getId() {
         return id;
     }

@@ -14,11 +14,11 @@ import java.util.List;
 public class NguoiDungController {
 
     @Autowired
-    private NguoiDungDao dao;
+    private NguoiDungDao nguoidungdao;
 
     @GetMapping("/list")
     public String listNguoiDung(Model model) {
-        List<NguoiDung> list = dao.getAllNguoiDung();
+        List<NguoiDung> list = nguoidungdao.getAllNguoiDung();
         model.addAttribute("list", list);
         return "nguoidung/list";
     }
@@ -26,31 +26,31 @@ public class NguoiDungController {
     @GetMapping("/form")
     public String showForm(Model model) {
         model.addAttribute("command", new NguoiDung());
-        return "nguoidung/save";
+        return "nguoidung/form";
     }
 
     @PostMapping("/save")
     public String save(@ModelAttribute("nguoiDung") NguoiDung nguoiDung) {
-        dao.save(nguoiDung);
+    	nguoidungdao.save(nguoiDung);
         return "redirect:/nguoidung/list";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") int id, Model model) {
-        NguoiDung nguoiDung = dao.getNguoiDungById(id);
+        NguoiDung nguoiDung = nguoidungdao.getNguoiDungById(id);
         model.addAttribute("command", nguoiDung);
         return "nguoidung/edit";
     }
 
     @PostMapping("/editsave")
     public String editSave(@ModelAttribute("nguoiDung") NguoiDung nguoiDung) {
-        dao.update(nguoiDung);
+    	nguoidungdao.update(nguoiDung);
         return "redirect:/nguoidung/list";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
-        dao.delete(id);
+    	nguoidungdao.delete(id);
         return "redirect:/nguoidung/list";
     }
 }

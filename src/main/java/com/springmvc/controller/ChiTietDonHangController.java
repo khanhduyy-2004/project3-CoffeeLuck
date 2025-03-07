@@ -14,11 +14,11 @@ import java.util.List;
 public class ChiTietDonHangController {
 
     @Autowired
-    private ChiTietDonHangDao dao;
+    private ChiTietDonHangDao chitietdao;
 
     @GetMapping("/list")
     public String listChiTietDonHang(Model model) {
-        List<ChiTietDonHang> list = dao.getAllChiTietDonHang();
+        List<ChiTietDonHang> list = chitietdao.getAllChiTietDonHang();
         model.addAttribute("list", list);
         return "chitietdonhang/list";
     }
@@ -26,31 +26,31 @@ public class ChiTietDonHangController {
     @GetMapping("/form")
     public String showForm(Model model) {
         model.addAttribute("command", new ChiTietDonHang());
-        return "chitietdonhang/save";
+        return "chitietdonhang/form";
     }
 
     @PostMapping("/save")
     public String save(@ModelAttribute("chiTietDonHang") ChiTietDonHang chiTietDonHang) {
-        dao.save(chiTietDonHang);
+    	chitietdao.save(chiTietDonHang);
         return "redirect:/chitietdonhang/list";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") int id, Model model) {
-        ChiTietDonHang chiTietDonHang = dao.getChiTietDonHangById(id);
+        ChiTietDonHang chiTietDonHang = chitietdao.getChiTietDonHangById(id);
         model.addAttribute("command", chiTietDonHang);
         return "chitietdonhang/edit";
     }
 
     @PostMapping("/editsave")
     public String editSave(@ModelAttribute("chiTietDonHang") ChiTietDonHang chiTietDonHang) {
-        dao.update(chiTietDonHang);
+    	chitietdao.update(chiTietDonHang);
         return "redirect:/chitietdonhang/list";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
-        dao.delete(id);
+    	chitietdao.delete(id);
         return "redirect:/chitietdonhang/list";
     }
 }

@@ -25,7 +25,7 @@ public class NhanVienController {
     }
     
     @Autowired  
-    private NhanVienDao dao;
+    private NhanVienDao nhanviendao;
     
     // Trang chính chuyển hướng đến menu
     @GetMapping("/")
@@ -49,14 +49,14 @@ public class NhanVienController {
     // Lưu nhân viên vào database
     @PostMapping("/nhanvien/save")
     public String save(@ModelAttribute("nhanVien") NhanVien nhanVien) {
-        dao.save(nhanVien);
+    	nhanviendao.save(nhanVien);
         return "redirect:/nhanvien/view";
     }
 
     // Hiển thị danh sách nhân viên
     @GetMapping("/nhanvien/list")
     public String listNhanVien(Model model) {
-        List<NhanVien> listnv = dao.getAllNhanVien();
+        List<NhanVien> listnv = nhanviendao.getAllNhanVien();
         model.addAttribute("list", listnv);
         return "nhanvien/list";
     }
@@ -64,7 +64,7 @@ public class NhanVienController {
     // Hiển thị form chỉnh sửa thông tin nhân viên
     @GetMapping("/nhanvien/edit/{id}")
     public String edit(@PathVariable("id") int id, Model model) {
-        NhanVien nhanVien = dao.getNhanVienById(id);
+        NhanVien nhanVien = nhanviendao.getNhanVienById(id);
         model.addAttribute("command", nhanVien);
         return "edit";
     }
@@ -72,14 +72,14 @@ public class NhanVienController {
     // Lưu chỉnh sửa thông tin nhân viên
     @PostMapping("/nhanvien/editsave")
     public String editSave(@ModelAttribute("nhanVien") NhanVien nhanVien) {
-        dao.update(nhanVien);
+    	nhanviendao.update(nhanVien);
         return "redirect:/nhanvien/view";
     }
 
     // Xóa nhân viên theo ID
     @GetMapping("/nhanvien/delete/{id}")
     public String delete(@PathVariable("id") int id) {
-        dao.delete(id);
+    	nhanviendao.delete(id);
         return "redirect:/nhanvien/view";
     }
 }

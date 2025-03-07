@@ -4,12 +4,16 @@ public class DanhMuc {
     private int id;
     private String tenDanhMuc;
 
-    public DanhMuc() {}
+    // Constructors
+    public DanhMuc() {
+        super();
+    }
 
     public DanhMuc(String tenDanhMuc) {
         this.tenDanhMuc = tenDanhMuc;
     }
 
+    // Getters and Setters
     public int getId() {
         return id;
     }

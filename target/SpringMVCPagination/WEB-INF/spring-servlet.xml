@@ -11,9 +11,10 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<context:component-scan	base-package="com.springmvc.controller"></context:component-scan>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"></property>
-		<property name="suffix" value=".jsp"></property>
-	</bean>
+    <property name="prefix" value="/WEB-INF/views/" />
+    <property name="suffix" value=".jsp" />
+</bean>
+
 
 	<bean id="db" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
@@ -26,7 +27,22 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		<property name="dataSource" ref="db"></property>
 	</bean>
 
-	<bean id="dao" class="com.springmvc.dao.UserDao">
+	<bean id="donhangdao" class="com.springmvc.dao.DonHangDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	<bean id="nguoidungdao" class="com.springmvc.dao.NguoiDungDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	<bean id="chitietdao" class="com.springmvc.dao.ChiTietDonHangDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	<bean id="nhanviendao" class="com.springmvc.dao.NhanVienDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	<bean id="sanphamdao" class="com.springmvc.dao.SanPhamDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	<bean id="danhmucdao" class="com.springmvc.dao.DanhMucDao">
 		<property name="template" ref="jt"></property>
 	</bean>
 </beans>

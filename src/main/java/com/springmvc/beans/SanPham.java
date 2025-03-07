@@ -10,7 +10,10 @@ public class SanPham {
     private String hinhAnh;
     private int danhMucId;
 
-    public SanPham() {}
+    // Constructors
+    public SanPham() {
+        super();
+    }
 
     public SanPham(String tenSanPham, String moTa, BigDecimal gia, String hinhAnh, int danhMucId) {
         this.tenSanPham = tenSanPham;
@@ -20,6 +23,7 @@ public class SanPham {
         this.danhMucId = danhMucId;
     }
 
+    // Getters and Setters
     public int getId() {
         return id;
     }
